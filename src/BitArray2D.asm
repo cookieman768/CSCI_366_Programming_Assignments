@@ -13,6 +13,13 @@ set_bit_elem:
         ; rcx contains col
 
         ; add your code here
+        mov rax, rdx
+        imul rax, rsi
+        add rax, rcx
+        sal rax, 4
+        add rax, rdi
+        mov rdx, 1
+        mov rax, rdx
 
         mov rsp, rbp        ; restore stack pointer to before we pushed parameters onto the stack
         pop rbp             ; remove rbp from the stack to restore rsp to initial value

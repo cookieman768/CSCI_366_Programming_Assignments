@@ -29,6 +29,9 @@ BitArray2D::~BitArray2D() {
 
 bool BitArray2D::get(unsigned int row, unsigned int column){
    // check array bounds
+   if(row < 0 || row >= sizeof(array) || column < 0 || column >= sizeof(columns)) {
+       throw BitArray2DException("Out of bounds!");
+   }
 
    // get the element
    return get_bit_elem(array, columns, row, column);
@@ -38,6 +41,9 @@ bool BitArray2D::get(unsigned int row, unsigned int column){
 
 void BitArray2D::set(unsigned int row, unsigned int column){
    // check array bounds
+    if(row < 0 || row >= sizeof(array) || column < 0 || column >= sizeof(columns)) {
+        throw BitArray2DException("Out of bounds!");
+    }
 
    // set the element
    set_bit_elem(array, columns, row, column);
