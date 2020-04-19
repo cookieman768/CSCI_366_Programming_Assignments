@@ -16,9 +16,18 @@
 
 #include <math.h>
 #include "BitArray2D.hpp"
+#include "common.hpp"
 
 BitArray2D::BitArray2D(unsigned int rows, unsigned int columns) {
-
+    if(rows == 0 && columns == 0) {
+        throw BitArray2DException("You cannot have a 0 by 0 board!");
+    }
+    int size = rows * columns;
+    array = new char[size];
+    for(int i = 0; i < size; i++) {
+        array[i] = '0';
+        // cout << array[i];
+    }
 }
 
 
@@ -29,22 +38,26 @@ BitArray2D::~BitArray2D() {
 
 bool BitArray2D::get(unsigned int row, unsigned int column){
    // check array bounds
-   if(row < 0 || row >= sizeof(array) || column < 0 || column >= sizeof(columns)) {
-       throw BitArray2DException("Out of bounds!");
+   if(row < 0 || row >= BOARD_SIZE) {
+       throw BitArray2DException("Row is out of bounds.");
+   } else if(column < 0 || column >= BOARD_SIZE) {
+       throw BitArray2DException("Column is out of bounds.");
+   } else {
+       // get the element
+       return get_bit_elem(array, columns, row, column);
    }
-
-   // get the element
-   return get_bit_elem(array, columns, row, column);
 }
 
 
 
 void BitArray2D::set(unsigned int row, unsigned int column){
    // check array bounds
-    if(row < 0 || row >= sizeof(array) || column < 0 || column >= sizeof(columns)) {
-        throw BitArray2DException("Out of bounds!");
+    if(row < 0 || row >= BOARD_SIZE) {
+        throw BitArray2DException("Row is out of bounds.");
+    } else if(column < 0 || column >= BOARD_SIZE) {
+        throw BitArray2DException("Column is out of bounds.");
+    } else {
+        // set the element
+        set_bit_elem(array, columns, row, column);
     }
-
-   // set the element
-   set_bit_elem(array, columns, row, column);
 }

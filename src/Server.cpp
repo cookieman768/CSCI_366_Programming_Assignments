@@ -135,7 +135,7 @@ int Server::process_shot(unsigned int player) {
             // Set X and Y from JSON
             archive(y, x);
             // Check if the coordinates are out of bounds
-            cout << "X: " << x << " Y: " << y << " Size: " << BOARD_SIZE << endl;
+            //cout << "X: " << x << " Y: " << y << " Size: " << BOARD_SIZE << endl;
             /*if (x >= BOARD_SIZE || x < 0 || y >= BOARD_SIZE || y < 0) {
                 cout << "x: " << x << " Size: " << BOARD_SIZE;
                 result = OUT_OF_BOUNDS;
